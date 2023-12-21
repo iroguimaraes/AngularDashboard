@@ -10,9 +10,18 @@ import { map } from 'rxjs/operators';
 export class DashboardComponent implements OnInit {
 
 // Prime Charts Configuration here
-basicData: any;
+columnData: any;
+columnOptions: any;
 
-basicOptions: any;
+pieData: any;
+pieOptions: any;
+
+horizontalData: any;
+horizontalOptions: any;
+
+lineData: any;
+lineOptions: any;
+
 
 ngOnInit() {
   const documentStyle = getComputedStyle(document.documentElement);
@@ -20,7 +29,147 @@ ngOnInit() {
   const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
   const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
 
-  this.basicData = {
+  // Line Chart
+
+    this.lineData = {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      datasets: [
+          {
+              label: 'First Dataset',
+              data: [65, 59, 80, 81, 56, 55, 40],
+              fill: false,
+              borderColor: documentStyle.getPropertyValue('--blue-500'),
+              tension: 0.4
+          },
+          {
+              label: 'Second Dataset',
+              data: [28, 48, 40, 19, 86, 27, 90],
+              fill: false,
+              borderColor: documentStyle.getPropertyValue('--pink-500'),
+              tension: 0.4
+          }
+      ]
+  };
+
+  this.lineOptions = {
+      aspectRatio: 0.6,
+      plugins: {
+          legend: {
+              labels: {
+                  color: textColor
+              }
+          }
+      },
+      scales: {
+          x: {
+              ticks: {
+                  color: textColorSecondary
+              },
+              grid: {
+                  color: surfaceBorder,
+                  drawBorder: false
+              }
+          },
+          y: {
+              ticks: {
+                  color: textColorSecondary
+              },
+              grid: {
+                  color: surfaceBorder,
+                  drawBorder: false
+              }
+          }
+      },
+      maintainAspectRatio: false,
+      responsive: false
+  };
+
+  // Horizontal Bar Chart
+
+    this.horizontalData = {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      datasets: [
+          {
+              label: 'My First dataset',
+              backgroundColor: documentStyle.getPropertyValue('--blue-500'),
+              borderColor: documentStyle.getPropertyValue('--blue-500'),
+              data: [65, 59, 80, 81, 56, 55, 40]
+          },
+          {
+              label: 'My Second dataset',
+              backgroundColor: documentStyle.getPropertyValue('--pink-500'),
+              borderColor: documentStyle.getPropertyValue('--pink-500'),
+              data: [28, 48, 40, 19, 86, 27, 90]
+          }
+      ]
+  };
+
+  this.horizontalOptions = {
+      indexAxis: 'y',
+      aspectRatio: 0.8,
+      plugins: {
+          legend: {
+              labels: {
+                  color: textColor
+              }
+          }
+      },
+      scales: {
+          x: {
+              ticks: {
+                  color: textColorSecondary,
+                  font: {
+                      weight: 500
+                  }
+              },
+              grid: {
+                  color: surfaceBorder,
+                  drawBorder: false
+              }
+          },
+          y: {
+              ticks: {
+                  color: textColorSecondary
+              },
+              grid: {
+                  color: surfaceBorder,
+                  drawBorder: false
+              }
+          }
+      },
+      responsive: false,
+      maintainAspectRatio: false,
+  };
+
+  // Data Pie Chart
+
+  this.pieData = {
+    labels: ['A', 'B', 'C'],
+    datasets: [
+      {
+        data: [540, 325, 702],
+        backgroundColor: [documentStyle.getPropertyValue('--blue-500'), documentStyle.getPropertyValue('--yellow-500'), documentStyle.getPropertyValue('--green-500')],
+        hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-400'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
+      }
+    ]
+  };
+
+  this.pieOptions = {
+    plugins: {
+      legend: {
+        labels: {
+          usePointStyle: true,
+          color: textColor
+        }
+      }
+    },
+    responsive: false,
+    maintainAspectRatio: false
+  };
+
+
+  // Data Column Chart
+  this.columnData = {
       labels: ['Q1', 'Q2', 'Q3', 'Q4'],
       datasets: [
           {
@@ -33,7 +182,7 @@ ngOnInit() {
       ]
   };
 
-  this.basicOptions = {
+  this.columnOptions = {
       plugins: {
           legend: {
               labels: {
@@ -61,7 +210,9 @@ ngOnInit() {
                   drawBorder: false
               }
           }
-      }
+      },
+      responsive: false,
+      maintainAspectRatio: false
   };
 }
 

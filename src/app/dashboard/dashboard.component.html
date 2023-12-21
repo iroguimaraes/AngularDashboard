@@ -17,7 +17,7 @@
                 </mat-card-title>
             </mat-card-header>
             <mat-card-content class="dashboard-card-content">
-                <div>Card Content Here</div>
+                <p-chart type="bar" height="250" [data]="columnData" [options]="columnOptions"></p-chart>
             </mat-card-content>
             </mat-card>
         </mat-grid-tile>
@@ -38,7 +38,7 @@
                 </mat-card-title>
             </mat-card-header>
             <mat-card-content class="dashboard-card-content">
-                <div>Card Content Here</div>
+                <p-chart type="bar" height="265" [data]="horizontalData" [options]="horizontalOptions"></p-chart>
             </mat-card-content>
             </mat-card>
         </mat-grid-tile>
@@ -59,7 +59,7 @@
                 </mat-card-title>
             </mat-card-header>
             <mat-card-content class="dashboard-card-content">
-                <div>Card Content Here</div>
+                <p-chart type="pie" height="600" [data]="pieData" [options]="pieOptions"></p-chart>
             </mat-card-content>
             </mat-card>
         </mat-grid-tile>
@@ -80,7 +80,7 @@
                 </mat-card-title>
             </mat-card-header>
             <mat-card-content class="dashboard-card-content">
-                <div>Card Content Here</div>
+                <p-chart type="line" height="265" [data]="lineData" [options]="lineOptions"></p-chart>
             </mat-card-content>
             </mat-card>
         </mat-grid-tile>
