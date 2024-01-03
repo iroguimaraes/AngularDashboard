@@ -1,0 +1,43 @@
+<div class="financas-page">
+    <div class="exportar-button">
+      <button mat-raised-button color="primary">Exportar</button>
+    </div>
+    <br>
+    <div class="mat-elevation-z8 financas-table">
+      <table mat-table [dataSource]="dataSource">
+    
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> Id</th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+    
+        <!-- Descrição Column -->
+        <ng-container matColumnDef="descricao">
+          <th mat-header-cell *matHeaderCellDef> Descrição </th>
+          <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+        </ng-container>
+    
+        <!-- Tags Column -->
+        <ng-container matColumnDef="tags">
+          <th mat-header-cell *matHeaderCellDef> Tags </th>
+          <td mat-cell *matCellDef="let element"> {{element.tags}} </td>
+        </ng-container>
+    
+        <!-- Valores Column -->
+        <ng-container matColumnDef="valores">
+          <th mat-header-cell *matHeaderCellDef> Valores </th>
+          <td mat-cell *matCellDef="let element"> {{element.valores | currency: 'BRL'}} </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                     showFirstLastButtons
+                     aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div>  
+  </div>
+  

@@ -1,8 +1,8 @@
 
 // Essentials
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 // Router Module
@@ -25,9 +25,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RelatoriosComponent } from './relatorios/relatorios.component';
+import { FinanceiroComponent } from './financeiro/financeiro.component';
 
 // PrimeNG Chart Module
 import { ChartModule } from 'primeng/chart';
+
+// locale para valores em real na tabela de financas
+import ptBr from '@angular/common/locales/pt';
+registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
@@ -35,6 +40,7 @@ import { ChartModule } from 'primeng/chart';
     DashboardComponent,
     HomeComponent,
     RelatoriosComponent,
+    FinanceiroComponent,
   ],
   imports: [
     // Essential
@@ -59,7 +65,9 @@ import { ChartModule } from 'primeng/chart';
     // PrimeNG Chart Modules
     ChartModule
   ],
-  providers: [MatPaginator, MatTableDataSource],
+  providers: [MatPaginator, MatTableDataSource, 
+    { provide: LOCALE_ID, useValue: 'pt' },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
