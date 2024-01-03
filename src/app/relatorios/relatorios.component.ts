@@ -3,34 +3,34 @@ import {MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import {MatTableDataSource } from '@angular/material/table';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+export interface Relatorios {
+  id: number;
+  descricao: string;
+  tags: string;
+  arquivo: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  {position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na'},
-  {position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg'},
-  {position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al'},
-  {position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si'},
-  {position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P'},
-  {position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S'},
-  {position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl'},
-  {position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar'},
-  {position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K'},
-  {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
+const ELEMENT_DATA: Relatorios[] = [
+  { id: 1, descricao: 'Relatório de Vendas Mensal', tags: 'Vendas, Mensal', arquivo: 'vendas_mensal.pdf' },
+  { id: 2, descricao: 'Relatório Financeiro Trimestral', tags: 'Financeiro, Trimestral', arquivo: 'financeiro_trimestral.pdf' },
+  { id: 3, descricao: 'Análise de Estoques', tags: 'Estoque, Análise', arquivo: 'analise_estoques.xlsx' },
+  { id: 4, descricao: 'Relatório de Desempenho de Funcionários', tags: 'Recursos Humanos, Desempenho', arquivo: 'desempenho_funcionarios.doc' },
+  { id: 5, descricao: 'Relatório de Feedback do Cliente', tags: 'Clientes, Feedback', arquivo: 'feedback_cliente.pdf' },
+  { id: 6, descricao: 'Relatório de Produção Diária', tags: 'Produção, Diária', arquivo: 'producao_diaria.xlsx' },
+  { id: 7, descricao: 'Relatório de Despesas Operacionais', tags: 'Financeiro, Despesas', arquivo: 'despesas_operacionais.pdf' },
+  { id: 8, descricao: 'Análise de Market Share', tags: 'Marketing, Market Share', arquivo: 'analise_market_share.ppt' },
+  { id: 9, descricao: 'Relatório de Segurança no Trabalho', tags: 'Recursos Humanos, Segurança', arquivo: 'seguranca_trabalho.pdf' },
+  { id: 10, descricao: 'Relatório de Satisfação do Cliente', tags: 'Clientes, Satisfação', arquivo: 'satisfacao_cliente.docx' },
+  { id: 11, descricao: 'Relatório de Tendências de Mercado', tags: 'Marketing, Tendências', arquivo: 'tendencias_mercado.pptx' },
+  { id: 12, descricao: 'Análise de Retenção de Clientes', tags: 'Clientes, Retenção', arquivo: 'analise_retencao_clientes.xlsx' },
+  { id: 13, descricao: 'Relatório de Desempenho do Site', tags: 'Tecnologia, Desempenho', arquivo: 'desempenho_site.pdf' },
+  { id: 14, descricao: 'Relatório de Investimentos', tags: 'Financeiro, Investimentos', arquivo: 'investimentos.pdf' },
+  { id: 15, descricao: 'Relatório de Eficácia de Marketing Digital', tags: 'Marketing, Digital', arquivo: 'eficacia_marketing_digital.doc' },
+  { id: 16, descricao: 'Análise de Custos de Produção', tags: 'Produção, Custos', arquivo: 'analise_custos_producao.xlsx' },
+  { id: 17, descricao: 'Relatório de Pesquisa de Mercado', tags: 'Marketing, Pesquisa', arquivo: 'pesquisa_mercado.pptx' },
+  { id: 18, descricao: 'Relatório de Manutenção de Equipamentos', tags: 'Produção, Manutenção', arquivo: 'manutencao_equipamentos.pdf' },
+  { id: 19, descricao: 'Relatório de Desempenho de TI', tags: 'Tecnologia, Desempenho', arquivo: 'desempenho_ti.docx' },
+  { id: 20, descricao: 'Análise de Rentabilidade', tags: 'Financeiro, Rentabilidade', arquivo: 'analise_rentabilidade.pdf' }
 ];
 
 
@@ -41,8 +41,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class RelatoriosComponent implements AfterViewInit  {
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  displayedColumns: string[] = ['id', 'descricao', 'tags', 'arquivo', 'edit'];
+  dataSource = new MatTableDataSource<Relatorios>(ELEMENT_DATA);
+  ultimoRelatorio: Relatorios | undefined
 
   @ViewChild(MatSort) sort: MatSort = new MatSort();
   @ViewChild(MatPaginator) paginator: MatPaginator = new MatPaginator(new MatPaginatorIntl(), ChangeDetectorRef.prototype);
@@ -50,5 +51,10 @@ export class RelatoriosComponent implements AfterViewInit  {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
+
+  // pegando relatorio com maior id
+  maiorId = ELEMENT_DATA.reduce((objetoAnterior, objetoAtual) => {
+    return objetoAnterior.id > objetoAtual.id ? objetoAnterior : objetoAtual;
+  });
 
 }

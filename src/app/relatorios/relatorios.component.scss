@@ -1,3 +1,20 @@
+.relatorio-page {
+  margin: 2%;
+}
+
 table {
-    width: 100%;
-  }
+  width: 100%;
+}
+
+.relatorio-table {
+  width: 100%;
+}
+
+.ultimo-relatorio-card {
+  max-width: 400px;
+}
+
+.exportar-button {
+  display: flex;
+  justify-content: flex-end;
+}
