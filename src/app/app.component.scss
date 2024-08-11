@@ -1,11 +1,11 @@
 .example-spacer {
     flex: 1 1 auto;
-  }
+}
 
 .example-card {
     max-width: 400px;
 }
-  
+
 .example-header-image {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
@@ -13,4 +13,9 @@
 
 .grid-list {
     margin: 10%;
+}
+
+.toolbar-color.darker {
+    background-color: #673ab7;
+    color: #ffffff;
 }

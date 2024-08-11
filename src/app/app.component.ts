@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,17 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'angular-material-dashboard';
+  isDarkMode = false;
+
+  toggleTheme() {
+    this.isDarkMode = !this.isDarkMode;
+    if (this.isDarkMode) {
+      document.body.classList.add('darker');
+      document.getElementsByClassName('toolbar-color')[0].classList.add('darker')
+    } else {
+      document.body.classList.remove('darker');
+      document.getElementsByClassName('toolbar-color')[0].classList.remove('darker')
+    }
+  }
+
 }

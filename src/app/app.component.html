@@ -1,22 +1,25 @@
-  <!-- Toolbar-->
-  <div>
-    <p>
-      <mat-toolbar>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" routerLink="" routerLinkActive="active">
-          <mat-icon>home</mat-icon>
-        </button>
-        <span>System</span>
-        <span class="example-spacer"></span>
-        <button mat-button routerLink="/dashboard" routerLinkActive="active">Dashboard</button>
-        <span class="example-spacer"></span>
-        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-          <mat-icon>favorite</mat-icon>
-        </button>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-          <mat-icon>share</mat-icon>
-        </button>
-      </mat-toolbar>
-    </p>
-  </div>
+<!-- Toolbar-->
+<div>
+  <p>
+    <mat-toolbar class="toolbar-color">
+      <button mat-icon-button class="example-icon" routerLink="" routerLinkActive="active">
+        <mat-icon fontIcon="home"></mat-icon>
+      </button>
+      <span>System</span>
+      <span class="example-spacer"></span>
+      <button mat-button routerLink="/dashboard" routerLinkActive="active">Dashboard</button>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon" (click)="toggleTheme()">
+        <mat-icon fontIcon="dark_mode"></mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon favorite-icon">
+        <mat-icon fontIcon="favorite"></mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon">
+        <mat-icon fontIcon="share"></mat-icon>
+      </button>
+    </mat-toolbar>
+  </p>
+</div>
 
 <router-outlet></router-outlet>
