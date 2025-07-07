@@ -13,9 +13,11 @@ export class AppComponent {
     if (this.isDarkMode) {
       document.body.classList.add('darker');
       document.getElementsByClassName('toolbar-color')[0].classList.add('darker')
+      document.getElementsByClassName('mat-card')[0].classList.add('darker')
     } else {
       document.body.classList.remove('darker');
       document.getElementsByClassName('toolbar-color')[0].classList.remove('darker')
+      document.getElementsByClassName('mat-card')[0].classList.add('darker')
     }
   }
 
