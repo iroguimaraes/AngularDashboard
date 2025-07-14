@@ -37,10 +37,6 @@ registerLocaleData(ptBr);
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    HomeComponent,
-    RelatoriosComponent,
-    FinanceiroComponent,
   ],
   imports: [
     // Essential

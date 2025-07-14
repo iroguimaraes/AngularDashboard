@@ -1,8 +1,21 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
-import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { Relatorios } from '../relatorios/relatorios.component';
+import { CommonModule, CurrencyPipe } from '@angular/common';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCard, MatCardModule} from '@angular/material/card';
+import {MatGridList, MatGridListModule} from '@angular/material/grid-list';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatMenuModule } from '@angular/material/menu';
+import {MatPaginator, MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from '../app-routing.module';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { ChartModule } from 'primeng/chart';
 
 export interface Financas {
   id: number;
@@ -37,7 +50,21 @@ const dadosFinanceiros: Financas[] = [
 @Component({
   selector: 'app-financeiro',
   templateUrl: './financeiro.component.html',
-  styleUrl: './financeiro.component.scss'
+  styleUrl: './financeiro.component.scss',
+  imports: [CurrencyPipe, 
+    // Essential
+    CommonModule,
+    // Material Modules
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule,
+    // PrimeNG Chart Modules
+    ChartModule ]
 })
 export class FinanceiroComponent implements AfterViewInit {
 

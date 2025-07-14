@@ -1,7 +1,16 @@
+import { CommonModule } from '@angular/common';
 import {AfterViewInit, ChangeDetectorRef, Component, ViewChild} from '@angular/core';
-import {MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon';
+import {MatPaginator, MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import {MatTableDataSource } from '@angular/material/table';
+import {MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
+import { ChartModule } from 'primeng/chart';
+import { MatCardModule } from '@angular/material/card';
 
 export interface Relatorios {
   id: number;
@@ -37,7 +46,21 @@ const ELEMENT_DATA: Relatorios[] = [
 @Component({
   selector: 'app-relatorios',
   templateUrl: './relatorios.component.html',
-  styleUrl: './relatorios.component.scss'
+  styleUrl: './relatorios.component.scss',
+  imports: [
+    // Essential
+    CommonModule,
+    // Material Modules
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule,
+    // PrimeNG Chart Modules
+    ChartModule ]
 })
 export class RelatoriosComponent implements AfterViewInit  {
 

@@ -1,11 +1,17 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
+import { MatGridList, MatGridTile } from '@angular/material/grid-list';
+import { MatCard, MatCardContent, MatCardHeader, MatCardTitle } from '@angular/material/card';
+import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
+import { MatIcon } from '@angular/material/icon';
+import { ChartModule } from 'primeng/chart';
 
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
-    styleUrls: ['./dashboard.component.scss']
+    styleUrls: ['./dashboard.component.scss'],
+    imports: [MatGridList, MatCard, MatCardHeader, MatMenu, MatGridTile, MatCardTitle, MatCardContent, MatIcon, MatMenuTrigger, ChartModule],
 })
 export class DashboardComponent implements OnInit {
 
@@ -148,8 +154,8 @@ export class DashboardComponent implements OnInit {
             datasets: [
                 {
                     data: [16, 33, 51],
-                    backgroundColor: [documentStyle.getPropertyValue('--blue-500'), documentStyle.getPropertyValue('--yellow-500'), documentStyle.getPropertyValue('--green-500')],
-                    hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-400'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
+                    backgroundColor: [documentStyle.getPropertyValue('--p-cyan-500'), documentStyle.getPropertyValue('--p-orange-500'), documentStyle.getPropertyValue('--p-gray-500')],
+                    hoverBackgroundColor: [documentStyle.getPropertyValue('--p-cyan-400'), documentStyle.getPropertyValue('--p-orange-400'), documentStyle.getPropertyValue('--p-gray-400')]
                 }
             ]
         };
