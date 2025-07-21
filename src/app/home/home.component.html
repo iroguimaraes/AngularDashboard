@@ -1,3 +1,4 @@
+<!--
 <mat-grid-list class="grid-list" cols="4" rowHeight="3:1">
   <mat-grid-tile>
     <button mat-raised-button color="primary" routerLink="/dashboard" routerLinkActive="active">Dashboard</button>
@@ -7,6 +8,8 @@
   </mat-grid-tile>
   <mat-grid-tile>
     <button mat-raised-button color="primary" routerLink="/financeiro" routerLinkActive="active">Financeiro</button>
+  </mat-grid-tile>
+  <mat-grid-tile>
   </mat-grid-tile>
   <mat-grid-tile>
     <button mat-raised-button color="primary">Tabelas</button>
@@ -29,4 +32,50 @@
   <mat-grid-tile>
     <button mat-raised-button color="primary">Notificações</button>
   </mat-grid-tile>
+ 
 </mat-grid-list>
+ -->
+<div class="matcard-list">
+  <mat-card class="home-card" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>Dashboards</mat-card-title>
+    <mat-card-subtitle>Graficos & Dados</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      Dashboards dos dados da tabela
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button matButton routerLink="/dashboard" routerLinkActive="active">ACESSAR</button>
+  </mat-card-actions>
+</mat-card>
+<mat-card class="home-card" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>Relatórios</mat-card-title>
+    <mat-card-subtitle>Relatórios & planilhas</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      Relatórios e planilhas com acesso a editar ou excluir
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button matButton routerLink="/relatorios" routerLinkActive="active">ACESSAR</button>
+  </mat-card-actions>
+</mat-card>
+<mat-card class="home-card" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>Financeiro</mat-card-title>
+    <mat-card-subtitle>Tabelas & Valores</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      Tabela de dados financeiros para checar valores
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button matButton routerLink="/financeiro" routerLinkActive="active">ACESSAR</button>
+  </mat-card-actions>
+</mat-card>
+</div>
