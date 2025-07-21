@@ -153,25 +153,47 @@ export class DashboardComponent implements OnInit {
             labels: ['Produto A', 'Produto B', 'Produto C'],
             datasets: [
                 {
+                    label: "sales",
                     data: [16, 33, 51],
-                    backgroundColor: [documentStyle.getPropertyValue('--p-cyan-500'), documentStyle.getPropertyValue('--p-orange-500'), documentStyle.getPropertyValue('--p-gray-500')],
-                    hoverBackgroundColor: [documentStyle.getPropertyValue('--p-cyan-400'), documentStyle.getPropertyValue('--p-orange-400'), documentStyle.getPropertyValue('--p-gray-400')]
+                    backgroundColor: [
+                            'rgba(249, 115, 22, 0.2)',
+                            'rgba(6, 182, 212, 0.2)',
+                            'rgba(139, 92, 246, 0.2)',
+                        ],
+                        borderColor: ['rgb(249, 115, 22)', 'rgb(6, 182, 212)', 'rgb(139, 92, 246)'],
+                        borderWidth: 1,
                 }
             ]
         };
 
         this.pieOptions = {
-            plugins: {
-                legend: {
-                    labels: {
-                        usePointStyle: true,
-                        color: textColor
-                    }
-                }
-            },
-            responsive: false,
-            maintainAspectRatio: false
-        };
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: textColor,
+                        },
+                    },
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: textColorSecondary,
+                        },
+                        grid: {
+                            color: surfaceBorder,
+                        },
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: textColorSecondary,
+                        },
+                        grid: {
+                            color: surfaceBorder,
+                        },
+                    },
+                },
+            };
 
 
         // Data Column Chart
