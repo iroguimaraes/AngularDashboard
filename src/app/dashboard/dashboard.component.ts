@@ -6,6 +6,7 @@ import { MatCard, MatCardContent, MatCardHeader, MatCardTitle } from '@angular/m
 import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
 import { MatIcon } from '@angular/material/icon';
 import { ChartModule } from 'primeng/chart';
+import { DarkModeService } from '../DarkModeService';
 
 @Component({
     selector: 'app-dashboard',
@@ -14,6 +15,9 @@ import { ChartModule } from 'primeng/chart';
     imports: [MatGridList, MatCard, MatCardHeader, MatMenu, MatGridTile, MatCardTitle, MatCardContent, MatIcon, MatMenuTrigger, ChartModule],
 })
 export class DashboardComponent implements OnInit {
+    isDarkMode: boolean = false;
+    
+      constructor(private darkModeService: DarkModeService) {}
 
     // Prime Charts Configuration here
     columnData: any;
@@ -30,6 +34,20 @@ export class DashboardComponent implements OnInit {
 
 
     ngOnInit() {
+        // Dark Mode Settings
+        this.darkModeService.isDarkMode$.subscribe((value) => {
+          this.isDarkMode = value;
+          const cards = document.getElementsByClassName('dashboard-card');
+        for (let i = 0; i < cards.length; i++) {
+          const card = cards[i];
+          if (this.isDarkMode) {
+            card.classList.add('darker');
+          } else {
+            card.classList.remove('darker');
+          }
+        }
+      });
+      //Charts Settings
         const documentStyle = getComputedStyle(document.documentElement);
         const textColor = documentStyle.getPropertyValue('--text-color');
         const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
