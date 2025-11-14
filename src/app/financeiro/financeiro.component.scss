@@ -14,3 +14,13 @@ table {
   display: flex;
   justify-content: flex-end;
 }
+
+.financas-data-table.darker {
+  background-color: dimgray;
+  color: #ffffff;
+}
+
+.financas-data-table-pagination.darker {
+  background-color: dimgray;
+  color: #ffffff;
+}

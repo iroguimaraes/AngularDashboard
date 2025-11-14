@@ -11,6 +11,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { ChartModule } from 'primeng/chart';
 import { MatCardModule } from '@angular/material/card';
+import { DarkModeService } from '../DarkModeService';
 
 export interface Relatorios {
   id: number;
@@ -70,6 +71,45 @@ export class RelatoriosComponent implements AfterViewInit  {
 
   @ViewChild(MatSort) sort: MatSort = new MatSort();
   @ViewChild(MatPaginator) paginator: MatPaginator = new MatPaginator(new MatPaginatorIntl(), ChangeDetectorRef.prototype);
+
+  //Dark Mode Variables
+    isDarkMode: boolean = false;
+        
+    constructor(private darkModeService: DarkModeService) {}
+
+  ngOnInit() {
+  // Dark Mode Settings
+    this.darkModeService.isDarkMode$.subscribe((value) => {
+          this.isDarkMode = value;
+          const table = document.getElementsByClassName('relatorio-data-table');
+        for (let i = 0; i < table.length; i++) {
+          const tab = table[i];
+          if (this.isDarkMode) {
+            tab.classList.add('darker');
+          } else {
+            tab.classList.remove('darker');
+          }
+        }
+        const pagination = document.getElementsByClassName('relatorio-data-table-pagination');
+        for (let i = 0; i < pagination.length; i++) {
+          const pag = pagination[i];
+          if (this.isDarkMode) {
+            pag.classList.add('darker');
+          } else {
+            pag.classList.remove('darker');
+          }
+        }
+        const ultimoCard = document.getElementsByClassName('ultimo-relatorio-card');
+        for (let i = 0; i < ultimoCard.length; i++) {
+          const card = ultimoCard[i];
+          if (this.isDarkMode) {
+            card.classList.add('darker');
+          } else {
+            card.classList.remove('darker');
+          }
+        }
+      });
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

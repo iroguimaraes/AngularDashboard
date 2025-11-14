@@ -16,6 +16,7 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
 import { AppRoutingModule } from '../app-routing.module';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { ChartModule } from 'primeng/chart';
+import { DarkModeService } from '../DarkModeService';
 
 export interface Financas {
   id: number;
@@ -74,6 +75,35 @@ export class FinanceiroComponent implements AfterViewInit {
 
   @ViewChild(MatSort) sort: MatSort = new MatSort();
   @ViewChild(MatPaginator) paginator: MatPaginator = new MatPaginator(new MatPaginatorIntl(), ChangeDetectorRef.prototype);
+
+  //Dark Mode Variables
+  isDarkMode: boolean = false;
+      
+  constructor(private darkModeService: DarkModeService) {}
+  ngOnInit() {
+  // Dark Mode Settings
+    this.darkModeService.isDarkMode$.subscribe((value) => {
+          this.isDarkMode = value;
+          const table = document.getElementsByClassName('financas-data-table');
+        for (let i = 0; i < table.length; i++) {
+          const tab = table[i];
+          if (this.isDarkMode) {
+            tab.classList.add('darker');
+          } else {
+            tab.classList.remove('darker');
+          }
+        }
+        const pagination = document.getElementsByClassName('financas-data-table-pagination');
+        for (let i = 0; i < pagination.length; i++) {
+          const pag = pagination[i];
+          if (this.isDarkMode) {
+            pag.classList.add('darker');
+          } else {
+            pag.classList.remove('darker');
+          }
+        }
+      });
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

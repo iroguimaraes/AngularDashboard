@@ -12,9 +12,10 @@ import { DarkModeService } from '../DarkModeService';
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss'],
-    imports: [MatGridList, MatCard, MatCardHeader, MatMenu, MatGridTile, MatCardTitle, MatCardContent, MatIcon, MatMenuTrigger, ChartModule],
+    imports: [MatGridList, MatCard, MatCardHeader, MatGridTile, MatCardTitle, MatCardContent, ChartModule],
 })
 export class DashboardComponent implements OnInit {
+    //Dark Mode Variables
     isDarkMode: boolean = false;
     
       constructor(private darkModeService: DarkModeService) {}
